@@ -87,8 +87,13 @@ const Whether = () => {
   // clouds 02d
   // scattered clouds 03d
   // overcast clouds 04d
-  // broken clouds 04d
   // rain 10d 10n
+
+  const spinner = (
+    <div className="spinner-border text-primary" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </div>
+  );
 
   console.log(w);
   return (
@@ -104,19 +109,19 @@ const Whether = () => {
               Ecco il meteo di <strong>{city}</strong>
             </h1>
             <div className="d-flex">
-              <p>Oggi è {w ? w.weather[0].main : "Loading..."}</p>
-              <p>Ci aspetta una giornata {w ? w.weather[0].description : "Loading..."}</p>
+              <div>Oggi è {w ? w.weather[0].main : spinner}</div>
+              <div>Ci aspetta una giornata {w ? w.weather[0].description : spinner}</div>
             </div>
-            <p>Il vento oggi ha una velocità di {w ? w.wind.speed : "Loading..."} km/h</p>
+            <div>Il vento oggi ha una velocità di {w ? w.wind.speed : spinner} km/h</div>
             <p>L'alba è alle {formattedSunriseTime}</p>
             <p>Il tramonto è alle {formattedsunsetTime}</p>
             <p>Temperatura attuale: {tempNow}</p>
-            <p>Umidità {w ? w.main.humidity : "Loading..."} %</p>
+            <div>Umidità {w ? w.main.humidity : spinner} %</div>
             <p>
               temperatura max/min: {tempMax}/{tempMin}
             </p>
             <h2>
-              Dati da: {w ? w.base : "Loading"}, {w ? w.name : "Loading"}
+              Dati da: {w ? w.base : spinner}, {w ? w.name : spinner}
             </h2>
           </div>
           <div className=" responsiveDivWhether">{imgTime()}</div>

@@ -60,6 +60,11 @@
   }
 }
 
+@media screen and (max-width: 400px) {
+  .responsiveDay {
+    flex-direction: column;
+  }
+}
 @media screen and (max-width: 780px) {
   .responsive {
     flex-direction: column;

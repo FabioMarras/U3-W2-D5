@@ -3,7 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 const NextDay = () => {
-  const { lat, lon } = useParams();
+  const { lat, lon, city } = useParams();
   const WhetherNextDay = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=07efad871fc17bd4026253f2d9ba6465`;
   console.log(WhetherNextDay);
 
@@ -41,15 +41,31 @@ const NextDay = () => {
   //     return <p>nope</p>;
   //   }
 
+  function getImageUrl(icon) {
+    if (icon === "01d" || icon === "01n") {
+      return "https://cc-prod.scene7.com/is/image/CCProdAuthor/sun-illustration_P3a_690x724?$pjpeg$&jpegSize=200&wid=690";
+    } else if (icon === "03n" || icon === "02n" || icon === "02d") {
+      return "https://w7.pngwing.com/pngs/958/1015/png-transparent-weather-map-computer-icons-weather-forecasting-cloudy-cloud-weather-forecasting-computer-wallpaper.png";
+    } else if (icon === "03d" || icon === "04d" || icon === "04n") {
+      return "https://www.educolor.it/immagine-01-nuvoloso-dm9953.jpg";
+    } else if (icon === "10d" || icon === "10n") {
+      return "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Weather_icon_-_heavy_rain.svg/1024px-Weather_icon_-_heavy_rain.svg.png";
+    }
+    return "URL predefinito se nessuna corrispondenza";
+  }
+
   const seeNextDay = () => {
     if (nextDays) {
       return nextDays.list.slice(2).map((item, index) => (
-        <Row className="d-flex justify-content-between mt-4" key={index}>
+        <Row className="d-flex justify-content-between mt-4 responsiveDay" key={index}>
           <Col> {item.dt_txt}</Col>
           <Col>
             Temperatura max/min{item.main.temp_max}/{item.main.temp_min}
           </Col>
           <Col>è previsto: {item.weather[0].description}</Col>
+          <Col>
+            <img src={getImageUrl(item.weather[0].icon)} alt="Immagine meteo" width={"50px"} />
+          </Col>
         </Row>
       ));
     } else {
@@ -60,10 +76,11 @@ const NextDay = () => {
       );
     }
   };
-
   return (
     <div className="DayBg">
-      <h4>Previsioni dei prossimi giorni</h4>
+      <h4>
+        Previsioni di <strong>{city}</strong> dei prossimi giorni
+      </h4>
       {seeNextDay()}
     </div>
   );

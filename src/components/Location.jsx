@@ -61,7 +61,8 @@ const Location = () => {
   return (
     <Container className="mt-3 text-center">
       <div className="LocationBg">
-        <h1>Name: {locationData.name}</h1>
+        <h2>Scropri il meteo di tutte le città del mondo</h2>
+        <h1>Stai cercando: {locationData.name}</h1>
         <Form onSubmit={handleSubmit}>
           <Form.Control
             type="search"
@@ -87,7 +88,6 @@ const Location = () => {
           </Button>
         </Link>
       </div>
-      <h2>Scropri il meteo di tutte le città del mondo</h2>
     </Container>
   );
 };
