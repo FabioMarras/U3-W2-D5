@@ -81,6 +81,41 @@ const NextDay = () => {
       <h4>
         Previsioni di <strong>{city}</strong> dei prossimi giorni
       </h4>
+      <div className="d-flex my-4">
+        <div className="card mx-2 justify-content-center p-2">
+          <strong>{nextDays.list[0].dt_txt}</strong>
+          <br />
+          Temp min/max: {nextDays.list[0].main.temp_min}/{nextDays.list[0].main.temp_max}
+          <br />
+          Tempo: {nextDays.list[0].weather[0].description}
+          <br />
+          Vento: {nextDays.list[0].wind.speed} km/h
+          <br />
+          Umidità: {nextDays.list[0].main.humidity} %
+        </div>
+        <div className="card mx-2 justify-content-center p-2">
+          <strong>{nextDays.list[8].dt_txt}</strong>
+          <br />
+          Temp min/max: {nextDays.list[8].main.temp_min}/{nextDays.list[8].main.temp_max}
+          <br />
+          Tempo: {nextDays.list[8].weather[0].description}
+          <br />
+          Vento: {nextDays.list[8].wind.speed} km/h
+          <br />
+          Umidità: {nextDays.list[8].main.humidity} %
+        </div>
+        <div className="card mx-2 justify-content-center p-2">
+          <strong>{nextDays.list[16].dt_txt}</strong>
+          <br />
+          Temp min/max: {nextDays.list[16].main.temp_min}/{nextDays.list[16].main.temp_max}
+          <br />
+          Tempo: {nextDays.list[16].weather[0].description}
+          <br />
+          Vento: {nextDays.list[16].wind.speed} km/h
+          <br />
+          Umidità: {nextDays.list[16].main.humidity} %
+        </div>
+      </div>
       {seeNextDay()}
     </div>
   );
