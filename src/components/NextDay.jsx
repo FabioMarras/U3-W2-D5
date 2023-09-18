@@ -9,6 +9,12 @@ const NextDay = () => {
 
   const [nextDays, setNextDays] = useState(null);
 
+  const spinner = (
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  );
+
   const getWhetherNextDay = async () => {
     try {
       const response = await fetch(WhetherNextDay);
@@ -76,12 +82,15 @@ const NextDay = () => {
       );
     }
   };
+  if (!nextDays) {
+    return spinner;
+  }
   return (
     <div className="DayBg">
       <h4>
         Previsioni di <strong>{city}</strong> dei prossimi giorni
       </h4>
-      <div className="d-flex my-4">
+      <div className="d-flex my-4 justify-content-around">
         <div className="card mx-2 justify-content-center p-2">
           <strong>{nextDays.list[0].dt_txt}</strong>
           <br />
