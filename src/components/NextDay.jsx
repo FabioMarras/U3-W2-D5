@@ -10,8 +10,8 @@ const NextDay = () => {
   const [nextDays, setNextDays] = useState(null);
 
   const spinner = (
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Loading...</span>
+    <div className="spinner-border text-primary" role="status">
+      <span className="visually-hidden">Loading...</span>
     </div>
   );
 
@@ -63,7 +63,7 @@ const NextDay = () => {
   const seeNextDay = () => {
     if (nextDays) {
       return nextDays.list.slice(2).map((item, index) => (
-        <Row className="d-flex justify-content-between mt-4 responsiveDay" key={index}>
+        <Row className="d-flex justify-content-between mt-4 responsiveDay text-center" key={index}>
           <Col> {item.dt_txt}</Col>
           <Col>
             Temperatura max/min{item.main.temp_max}/{item.main.temp_min}
@@ -87,7 +87,7 @@ const NextDay = () => {
   }
   return (
     <div className="DayBg">
-      <h4>
+      <h4 className="text-center">
         Previsioni di <strong>{city}</strong> dei prossimi giorni
       </h4>
       <div className="d-flex my-4 justify-content-around">
